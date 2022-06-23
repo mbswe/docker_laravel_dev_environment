@@ -3,7 +3,9 @@ LABEL maintainer="Magnus Berntsson <magnus@magnus.tech>"
 
 # Install Nodejs
 RUN apk update
-RUN apk add nodejs npm
+RUN apk add nodejs
+RUN apk add npm
+RUN apk add yarn
 
 # Install gd, iconv, mbstring, mysql, soap, sockets, zip, and zlib extensions
 RUN apk add -U php7-dev --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing

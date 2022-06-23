@@ -13,6 +13,7 @@ help:
 	@echo "  node                   Nodejs"
 	@echo "  npm                    NPM"
 	@echo "  npx                    NPX"
+	@echo "  yarn                   Yarn"
 	@echo "  phpversion             Print PHP version"
 	@echo "  build                  Build environment"
 	@echo "  start                  Start environment"
@@ -24,6 +25,18 @@ help:
 
 artisan:
 	docker exec ${COMPOSE_PROJECT_NAME}_php_$(PHP_VERSION) php artisan $(filter-out $@,$(MAKECMDGOALS))
+
+node:
+	docker exec ${COMPOSE_PROJECT_NAME}_php_$(PHP_VERSION) node $(filter-out $@,$(MAKECMDGOALS))
+
+npm:
+	docker exec ${COMPOSE_PROJECT_NAME}_php_$(PHP_VERSION) npm $(filter-out $@,$(MAKECMDGOALS))
+
+npx:
+	docker exec ${COMPOSE_PROJECT_NAME}_php_$(PHP_VERSION) npx $(filter-out $@,$(MAKECMDGOALS))
+
+yarn:
+	docker exec ${COMPOSE_PROJECT_NAME}_php_$(PHP_VERSION) yarn $(filter-out $@,$(MAKECMDGOALS))
 
 composer:
 	@docker exec ${COMPOSE_PROJECT_NAME}_php_$(PHP_VERSION) composer $(filter-out $@,$(MAKECMDGOALS))
